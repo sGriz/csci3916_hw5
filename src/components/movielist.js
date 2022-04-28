@@ -20,12 +20,24 @@ class MovieList extends Component {
 
     handleSelect(selectedIndex, e) {
         const {dispatch} = this.props;
-        dispatch(setMovie(this.props.movies[selectedIndex]));
+        let tempRevs = [];
+        for (var i=0; i<this.props.movies.revs ;i++){
+            if (this.props.movies.revs[i].title === this.props.movies.title){
+                tempRevs.push(this.props.movies.revs[i]);
+            }
+        }
+        dispatch(setMovie(this.props.movies.movs[selectedIndex], tempRevs));
     }
 
     handleClick = (movie) => {
         const {dispatch} = this.props;
-        dispatch(setMovie(movie));
+        let tempRevs = [];
+        for (var i=0; i<this.props.movies.revs ;i++){
+            if (this.props.movies.revs[i].title === movie.title){
+                tempRevs.push(this.props.movies.revs[i]);
+            }
+        }
+        dispatch(setMovie(movie, tempRevs));
     }
 
     render() {
@@ -39,13 +51,13 @@ class MovieList extends Component {
                     {movieList.map((movie) =>
                         <Carousel.Item key={movie._id}>
                             <div>
-                                <LinkContainer to={'/movie/'+movie._id} onClick={()=>this.handleClick(movie)}>
+                                <LinkContainer to={'/movie/'+movie.title} onClick={()=>this.handleClick(movie)}>
                                     <Nav.Link><Image className="image" src={movie.imageUrl} thumbnail /></Nav.Link>
                                 </LinkContainer>
                             </div>
                             <Carousel.Caption>
                                 <h3>{movie.title}</h3>
-                                <BsStarFill glyph={'star'} /> {movie.avgRating} &nbsp;&nbsp; {movie.releaseDate}
+                                <BsStarFill glyph={'star'} /> {movie.avgRating} &nbsp;&nbsp; {movie.year}
                             </Carousel.Caption>
                         </Carousel.Item>
                     )}
@@ -55,7 +67,7 @@ class MovieList extends Component {
         }
 
         return (
-            <MovieListCarousel movieList={this.props.movies} />
+            <MovieListCarousel movieList={this.props.movies.movs} />
         )
     }
 }

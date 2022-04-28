@@ -16,16 +16,16 @@ function movieFetched(movie) {
     }
 }
 
-function movieSet(movie) {
+function movieSet(movie, reviews) {
     return {
         type: actionTypes.SET_MOVIE,
-        selectedMovie: movie
+        selectedMovie: {movs: movie, revs: reviews}
     }
 }
 
-export function setMovie(movie) {
+export function setMovie(movie, reviews) {
     return dispatch => {
-        dispatch(movieSet(movie));
+        dispatch(movieSet(movie, reviews));
     }
 }
 
