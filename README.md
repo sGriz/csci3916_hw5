@@ -1,70 +1,20 @@
-# Getting Started with Create React App
+# CSC3916 HW5
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## NEW:
+React front-end can register and login a user. All endpoints are protected by JWT authentication. Movie list displays a carousel (avgRating does not work). Scrolling through the carousel loads a 'selectedMovie' for the Movie Detail button. Selecting a movie displays movie details. Users can post reviews and ratings (each typed character scrolls the user to the top of the page, and posting a review doesn't refresh, but it will post). Ratings are displayed in the movie details.
 
-## Available Scripts
+## Description:
+A standard REST server (POST,GET,PUT,DELETE) using NodeJS/Express.
 
-In the project directory, you can run:
+The React front-end can be found at: https://csc3916-hw5-gryzick.herokuapp.com/#/signin
 
-### `yarn start`
+The Movies API can be found at: https://csci3916-hw4-gryz.herokuapp.com/
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## How-to:
+The React website provides UI for the /signup and /signin routes in our web API. The Movies API can be queried using the postman collection included below. Movies can be saved by POSTing to the /movies route. PUT, DEL, and GET are routed under /movies/:id. All CRUD operations are protected by JWT authentication (the token is retrieved from /signin and stored in a .env). Calling a update/save on the /movies collection will perform a validation of the title, year, genre, and an array of three actors in a JSON object.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## POSTMAN:
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/c9ada6ea34ca9d5d50b2?action=collection%2Fimport#?env%5BjwtToken_env_gryzick%5D=W3sia2V5Ijoiand0X3Rva2VuIiwidmFsdWUiOiJ0b2tlbiBoZXJlIiwiZW5hYmxlZCI6dHJ1ZSwidHlwZSI6InRleHQiLCJzZXNzaW9uVmFsdWUiOiJKV1QuLi4iLCJzZXNzaW9uSW5kZXgiOjB9XQ==)
 
-### `yarn test`
+!! Check that the environment 'jwtToken_env_gryzick' is enabled in Postman. Postman needs to store 'jwt_token' from the '/signin' POST in an environment variable in order for jwt authentication to succeed. !!
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
